@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="post-detail">
+  <div class="post">
+    <h3>{{post.title}}</h3>
+    {% if post.thumb %}
+    <img src="{{ post.thumb.url }}"/>
+    {% endif %}
+    <p>{{post.body}}</p>
+    <p>Posted by:<span class="author_post">  {{post.author}}</span> at {{post.date}}</p>
+  </div>
+
+
+
+</div>
+<script src=""/static/js/comm.js""></script>
+{% endblock %}

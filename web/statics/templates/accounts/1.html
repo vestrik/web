@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+{%block content%}
+
+<form class="registration_form" action="{% url 'accounts:registration' %}" method="post">
+  {%csrf_token%}
+  <label>Login:</label>
+  <div class="">
+    <input type="text" class='loginReg field' name="logf" id="logf">
+  </div>
+
+</form>
+<script type="text/javascript">
+  
+</script>
+
+{%endblock%}
