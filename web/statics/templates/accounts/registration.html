@@ -1,58 +1,57 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-    <form class='registration_form' action="{% url 'accounts:registration' %}" method="post">
-      {% csrf_token %}
-      <div>
-        <div>
-          <label>Login:</label>
-        </div>
-        <div>
-          <input type='text' class='loginReg field' name="logf" id='logf'/>
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>Email:</label>
-        </div>
-        <div>
-          <input type='text' class='emailReg field' name='emailf' id='emailf'/>
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>Password:</label>
-        </div>
-        <div>
-          <input type='password' class='passwordReg field' name='passf' id='passf'/>
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>Password confirmation:</label>
-        </div>
-        <div>
-          <input type='password' class='passwordConf field'/>
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>Name:</label>
-        </div>
-        <div>
-          <input type='text' class='name field' name='namef' id='namef'/>
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>Surname:</label>
-        </div>
-        <div>
-          <input type='text' class='surname field' name='snamef' id='snamef'/>
-        </div>
-      </div>
-    <input type="submit" class='RegBtn' value='Registrate'>
-  </form>
+<form class='registration_form' action="{% url 'accounts:registration' %}" method="post">
+  {% csrf_token %}
+  <div>
+    <div>
+      <label>Login:</label>
+    </div>
+    <div>
+      <input type='text' class='loginReg field' name="logf" id='logf' />
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Email:</label>
+    </div>
+    <div>
+      <input type='text' class='emailReg field' name='emailf' id='emailf' />
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Password:</label>
+    </div>
+    <div>
+      <input type='password' class='passwordReg field' name='passf' id='passf' />
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Password confirmation:</label>
+    </div>
+    <div>
+      <input type='password' class='passwordConf field' />
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Name:</label>
+    </div>
+    <div>
+      <input type='text' class='name field' name='namef' id='namef' />
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Surname:</label>
+    </div>
+    <div>
+      <input type='text' class='surname field' name='snamef' id='snamef' />
+    </div>
+  </div>
+  <input type="submit" class='RegBtn' value='Registrate'>
+</form>
 
-<script src="/static/js/reg.js"></script>
 {%endblock%}

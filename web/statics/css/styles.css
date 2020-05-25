@@ -62,6 +62,18 @@ nav li {
   margin: 25px;
 }
 
+.comment {
+  width:80%;
+  display: block;
+  margin: 25px auto;
+  background: rgb(255, 255, 255, 0.85);
+  padding: 10px 25px;
+}
+.comment textarea {
+   resize: none;
+
+}
+
 .postHref {
   margin-bottom: 10px;
 }
@@ -84,8 +96,6 @@ video {
   width: 750px;
   display: block;
   margin: 0 auto;
-
-
 }
 
 iframe {

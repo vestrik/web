@@ -3,57 +3,61 @@
 <!DOCTYPE html>
 <html>
 
- <head>
- 	<meta charset="utf-8">
- 	<title>Home Page</title>
- 	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
- </head>
+<head>
+  <meta charset="utf-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
 
- <body>
-   <header>
-     <div class="containerh">
-       <a class="logo" href="{% url 'posts:list'%}"><img src="/static/media/src/home-7-48.png"></a>
-       <nav class="menu">
-          <ul>
-            <li>
-              {% if user.get_username %}
-                logged as: {{ user.get_username }}
-              {% endif %}
-            </li>
-            <li>
-              <form action="{% url 'posts:create'%}">
-                <button  class="btnh">Create post</button>
-              </form>
-            </li>
-            <li>
-              <form action="{% url 'accounts:registration'%}">
-                <button  class="btnh">Sign up</button>
-              </form>
-            </li>
-            <li>
-              <form action="{% url 'accounts:login'%}">
-                <button  class="btnh">Log in</button>
-              </form>
-            </li>
-            <li>
-              <form class="logout_form" action="{% url 'accounts:logout'%}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btnh">Log out </button>
-              </form>
-            </li>
-          </ul>
-        </nav>
-     </div>
-   </header>
-   <div class="main">
-     <div class="wrapper">
+<body>
+  <header>
+    <div class="containerh">
+      <a class="logo" href="{% url 'posts:list'%}"><img src="/static/media/src/home-7-48.png"></a>
+      <nav class="menu">
+        <ul>
+          <li>
+            {% if user.get_username %}
+            logged as: {{ user.get_username }}
+            {% endif %}
+          </li>
+          <li>
+            <form action="{% url 'posts:create'%}">
+              <button  class="btnh">Create post</button>
+            </form>
+          </li>
+          <li>
+            <form action="{% url 'accounts:registration'%}">
+              <button  class="btnh">Sign up</button>
+            </form>
+          </li>
+          <li>
+            <form action="{% url 'accounts:login'%}">
+              <button  class="btnh">Log in</button>
+            </form>
+          </li>
+          <li>
+            <form class="logout_form" action="{% url 'accounts:logout'%}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btnh">Log out </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="main">
+    <div class="wrapper">
 
-       {% block content %}
-       {% endblock %}
-     </div>
-   </div>
-   <footer>
-    </footer>
-  </body>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+  <footer>
+  </footer>
 
- </html>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/js/comm.js"></script>
+
+</html>

@@ -8,7 +8,7 @@ var fname = form.querySelector('.name')
 var sname = form.querySelector('.surname')
 var fields = form.querySelectorAll('.field')
 
-var generateError = function (text) {
+var generateError = function(text) {
   var error = document.createElement('div')
   error.className = 'error'
   error.style.color = 'red'
@@ -16,7 +16,7 @@ var generateError = function (text) {
   return error
 }
 
-var removeValidation = function () {
+var removeValidation = function() {
   var errors = form.querySelectorAll('.error')
 
   for (var i = 0; i < errors.length; i++) {
@@ -24,10 +24,9 @@ var removeValidation = function () {
   }
 }
 
-var checkFieldsPresence = function () {
+var checkFieldsPresence = function() {
   for (var i = 0; i < fields.length; i++) {
-    if (!fields[i].value)
-    {
+    if (!fields[i].value) {
       var error = generateError('Cannot be blank')
       //form[i].parentElement.insertBefore(error, fields[i])
       fields[i].style.border = "2px solid"
@@ -37,7 +36,7 @@ var checkFieldsPresence = function () {
   }
 }
 
-var checkPasswordMatch = function () {
+var checkPasswordMatch = function() {
   if (password.value !== passwordConf.value) {
     var error = generateError('Password doesnt match')
     passwordConf.parentElement.insertBefore(error, passwordConf)
@@ -45,8 +44,7 @@ var checkPasswordMatch = function () {
     passwordConf.style.borderColor = "red"
     password.style.border = "2px solid"
     password.style.borderColor = "red"
-  }
-  else {
+  } else {
     passwordConf.style.border = "2px solid"
     passwordConf.style.borderColor = "green"
     password.style.border = "2px solid"
@@ -54,66 +52,59 @@ var checkPasswordMatch = function () {
   }
 }
 
-var validateEmail = function () {
+var validateEmail = function() {
   var re = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/;
-  if (!re.test(email.value) && (email.value !== ""))
-  {
+  if (!re.test(email.value) && (email.value !== "")) {
     var error = generateError('email not match')
     email.parentElement.insertBefore(error, email)
     email.style.border = "2px solid"
     email.style.borderColor = "red"
-  }
-  else {
+  } else {
     email.style.border = "2px solid"
     email.style.borderColor = "green"
   }
 }
 
-var validateFName = function () {
+var validateFName = function() {
   var re = /^[A-ZЁА-Я][a-zёа-я]{1,10}$/;
   var error = generateError('name error')
-  if ((!fname.value.match(re)) && (fname.value !== ""))
-  {
+  if ((!fname.value.match(re)) && (fname.value !== "")) {
     fname.parentElement.insertBefore(error, fname)
     fname.style.border = "2px solid"
     fname.style.borderColor = "red"
-  }
-  else {
+  } else {
     fname.style.border = "2px solid"
     fname.style.borderColor = "green"
   }
 }
 
-var validateSName = function () {
+var validateSName = function() {
   var re = /^[A-ZЁА-Я][a-zёа-я]{1,10}$/;
   var error = generateError('name error')
-  if ((!sname.value.match(re)) && (sname.value !== ""))
-  {
+  if ((!sname.value.match(re)) && (sname.value !== "")) {
     sname.parentElement.insertBefore(error, sname)
     sname.style.border = "2px solid"
     sname.style.borderColor = "red"
-  }
-  else {
+  } else {
     sname.style.border = "2px solid"
     sname.style.borderColor = "green"
   }
 }
 
-var validateLogin = function () {
+var validateLogin = function() {
   var r = /^[A-zЁёА-я0-9]{3,10}$/;
   var error = generateError('login error')
   if ((!login.value.match(r)) && (login.value !== "")) {
     login.parentElement.insertBefore(error, login)
     login.style.border = "2px solid"
     login.style.borderColor = "red"
-  }
-  else {
+  } else {
     login.style.border = "2px solid"
     login.style.borderColor = "green"
   }
 }
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault()
 
   checkFieldsPresence()
@@ -122,7 +113,6 @@ form.addEventListener('submit', function (event) {
   validateEmail()
   validateFName()
   validateSName()
-
   checkPasswordMatch()
   checkFieldsPresence()
 

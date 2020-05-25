@@ -10,10 +10,31 @@
     {% endif %}
     <p>{{post.body}}</p>
     <p>Posted by:<span class="author_post">  {{post.author}}</span> at {{post.date}}</p>
+    <p><a class='like-btn' data-href='{{ post.get_api_like_url }}' data-likes='{{ post.likes.count }}' href='{{ post.get_like_url }}'>{{ post.likes.count }} Like</a></p>
+    <p><div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+  </div>
+
+<div class="comment-section">
+  <div class="comment">
+   <form method="post" id="comment_form" class="comment-form" action=".">
+     {%csrf_token%}
+     <input type="text" id="comment_input">
+     <input type="submit" class="btnh" value="comment">
+   </form>
+  </div>
+
+    <div class="comment-section" id="commentList">
+      {%for comment in comments%}
+      <div class="comment" id="comm">
+          <p>{{comment.body}} </p>
+          <p>Commented by:<span class="author_post" id="auth">  {{comment.author}}</span> at {{comment.date}}</p>
+      </div>
+      {%endfor%}
+    </div>
   </div>
 
 
 
 </div>
-<script src=""/static/js/comm.js""></script>
+
 {% endblock %}

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 
 # Create your models here.
 class Post(models.Model):
@@ -15,3 +17,28 @@ class Post(models.Model):
 
     def snippet(self):
         return self.body[:50] + '...'
+
+
+
+
+
+class Comment(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(null=True)
+    author =  models.ForeignKey(User,to_field="username",default=None,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Post,default=None,on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return '{}-{}'.format(self.post.title, str(self.author.username))
+
+    def getDate(self):
+        return self.date
+
+    def serialize(self):
+        return {
+            "id":self.id,
+            "date":self.date,
+            "body":self.body,
+            "author":self.author
+        }

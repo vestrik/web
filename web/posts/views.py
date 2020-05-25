@@ -1,9 +1,13 @@
-from django.shortcuts import render, redirect
-from .models import Post
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Post, Comment
+from django.views.generic import RedirectView
 from django.http import HttpResponse
+from django.core import serializers
+from django.http.response import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from . import forms
-
+import json
 
 # Create your views here.
 def post_list(request):
@@ -13,7 +17,21 @@ def post_list(request):
 def post_detail(request, slug):
     # return HttpResponse(slug)
     post = Post.objects.get(slug=slug)
-    return render(request,'posts/post_detail.html',{'post':post})
+    comments = Comment.objects.filter(post=post).order_by('-date')
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = forms.CommentForm(request.POST or None)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.author = request.user
+                instance.post = post
+                instance.save()
+        else: return redirect("/accounts/login/")
+    else:
+        form = forms.CommentForm()
+    return render(request,'posts/post_detail.html',{'post':post, 'comments':comments,'form':form})
+
+
 
 @login_required(login_url="/accounts/login/")
 def post_create(request):
@@ -27,3 +45,17 @@ def post_create(request):
     else:
         form = forms.CreatePost()
     return render(request,'posts/post_create.html', {'form':form})
+
+
+def addcomment(request,slug):
+    post = Post.objects.get(slug=slug)
+    data = json.loads(request.body)
+    c=Comment(body=data["comment"])
+    c.author = request.user
+    c.post = post
+    c.save()
+    ID=c.id
+    if request.is_ajax():
+        qset=Comment.objects.filter(post=post, id=ID)
+        queryset = serializers.serialize('json', qset)
+        return JsonResponse(queryset, safe=False, content_type="application/json")
