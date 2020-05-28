@@ -2,8 +2,6 @@ $(document).on('submit', '#comment_form', function(e) {
   e.preventDefault();
   var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
-
-
   $.ajax({
     type: "POST",
     url: "addcomm/",
@@ -21,13 +19,9 @@ $(document).on('submit', '#comment_form', function(e) {
       html = JSON.parse(r)
       renderHTML(html)
       console.log(html);
-
     }
-
   });
-
 });
-
 
 function renderHTML(data) {
   var htmlString = "";
@@ -43,14 +37,7 @@ function renderHTML(data) {
   const month = myDate.toLocaleString('default', {
     month: 'long'
   });
-  var output = myDate.getDate() + " " + month + " " + myDate.getFullYear() + " г. " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
+  var output = myDate.getDate() + " " + month + " " + myDate.getFullYear() + " г. " + myDate.getHours() + ":" + myDate.getMinutes();
   $('#comm' + data[0].pk).append('<p>Commented by:<span class="author_post" id="auth"> ' + data[0].fields.author + ' </span> at ' + output + '</p>')
-
-
-
-
-  console.log(htmlString);
-
-
 
 }

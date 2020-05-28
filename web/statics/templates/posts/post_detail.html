@@ -10,13 +10,11 @@
     {% endif %}
     <p>{{post.body}}</p>
     <p>Posted by:<span class="author_post">  {{post.author}}</span> at {{post.date}}</p>
-    <p><a class='like-btn' data-href='{{ post.get_api_like_url }}' data-likes='{{ post.likes.count }}' href='{{ post.get_like_url }}'>{{ post.likes.count }} Like</a></p>
-    <p><div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
   </div>
 
 <div class="comment-section">
   <div class="comment">
-   <form method="post" id="comment_form" class="comment-form" action=".">
+   <form method="post" id="comment_form" class="comment-form">
      {%csrf_token%}
      <input type="text" id="comment_input">
      <input type="submit" class="btnh" value="comment">
