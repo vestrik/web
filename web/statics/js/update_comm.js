@@ -18,7 +18,7 @@ setInterval(function() {
       renderHTML(html)
     }
   });
-}, 30000);
+}, 15000);
 
 function clear_comments() {
   $('#commentList').empty()
