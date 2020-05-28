@@ -20,13 +20,11 @@ class Post(models.Model):
 
 
 
-
-
 class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     body = models.TextField(null=True)
     author =  models.ForeignKey(User,to_field="username",default=None,on_delete=models.CASCADE)
-    post =  models.ForeignKey(Post,default=None,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Post,default=None,on_delete=models.CASCADE, related_name='p')
 
 
     def __str__(self):

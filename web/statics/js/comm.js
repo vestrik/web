@@ -18,7 +18,6 @@ $(document).on('submit', '#comment_form', function(e) {
     success: function(r) {
       html = JSON.parse(r)
       renderHTML(html)
-      console.log(html);
     }
   });
 });
@@ -28,11 +27,8 @@ function renderHTML(data) {
   $('#commentList').prepend('<div class="comment" id="comm' + data[0].pk + '">')
   $('#commentList').prepend('</div>')
   var commentContainer = document.getElementById("comm1")
-  //htmlString = "<p>" + data[0].fields.body + data[0].pk + "</p>";
-  //commentContainer.insertAdjacentHTML('beforeend', htmlString)
   $('#comm' + data[0].pk).prepend('</div>')
   $('#comm' + data[0].pk).append('<p>' + data[0].fields.body + '</p>')
-
   var myDate = new Date(data[0].fields.date)
   const month = myDate.toLocaleString('default', {
     month: 'long'

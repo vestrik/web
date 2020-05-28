@@ -12,10 +12,10 @@ import json
 # Create your views here.
 def post_list(request):
     posts = Post.objects.all().order_by('-date')
+    comments=Comment.objects.all()
     return render(request,'posts/post_list.html',{'posts':posts})
 
 def post_detail(request, slug):
-    # return HttpResponse(slug)
     post = Post.objects.get(slug=slug)
     comments = Comment.objects.filter(post=post).order_by('-date')
     if request.method == 'POST':
@@ -30,7 +30,6 @@ def post_detail(request, slug):
     else:
         form = forms.CommentForm()
     return render(request,'posts/post_detail.html',{'post':post, 'comments':comments,'form':form})
-
 
 
 @login_required(login_url="/accounts/login/")
@@ -59,3 +58,13 @@ def addcomment(request,slug):
         qset=Comment.objects.filter(post=post, id=ID)
         queryset = serializers.serialize('json', qset)
         return JsonResponse(queryset, safe=False, content_type="application/json")
+
+
+def updatecomment(request,slug):
+    post = Post.objects.get(slug=slug)
+    #result = request.post.comment_set.has_new()
+    commentCountNew = Comment.objects.filter(post=post).count()
+        qset=Comment.objects.filter(post=post)
+        queryset = serializers.serialize('json', qset)
+        return JsonResponse(queryset, safe=False, content_type="application/json")
+    else: return HttpResponse('')
