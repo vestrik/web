@@ -48,7 +48,7 @@ def post_create(request):
 
 def addcomment(request,slug):
     post = Post.objects.get(slug=slug)
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     c=Comment(body=data["comment"])
     c.author = request.user
     c.post = post

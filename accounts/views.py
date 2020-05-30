@@ -4,8 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.db import IntegrityError
-
-
 from .forms import RegForm
 
 
@@ -49,4 +47,3 @@ def logout_view(request):
             return redirect('posts:list')
         else:
             return HttpResponse('logout error')
-    
