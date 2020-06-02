@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<form class='login_form' action="{% url 'accounts:login' %}" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type='submit' class='LoginBtn' value='Log in' />
+</form>
+{% endblock %}
+{%block anchor%}
+{%endblock%}
+{%block reg%}
+{%endblock%}
+{%block comm%}
+{%endblock%}

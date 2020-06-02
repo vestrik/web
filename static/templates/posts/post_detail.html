@@ -1,0 +1,44 @@
+{% extends 'base_layout.html' %}
+
+b{% block content %}
+
+<div class="post-detail">
+  <div class="post">
+    <h3>{{post.title}}</h3>
+    {% if post.thumb %}
+    <img src="{{ post.thumb.url }}"/>
+    {% endif %}
+    <p>{{post.body}}</p>
+    <div class="post_comm_info">
+      <p>Posted by:<span class="user_name">  {{post.author}}</span> at {{post.date}}</p>
+    </div>
+  </div>
+
+<div class="comment-section">
+  <div class="comment">
+   <form method="post" id="comment_form" class="comment-form">
+     {%csrf_token%}
+     <input type="text" id="comment_input">
+     <input type="submit" class="btnh" value="comment">
+   </form>
+  </div>
+
+    <div class="comment-section" id="commentList">
+      {%for comment in comments%}
+      <div class="comment" id="comm">
+          <p>{{comment.body}} </p>
+          <div class="post_comm_info">
+            <p>Commented by:<span class="user_name" id="auth">  {{comment.author}}</span> at {{comment.date}}</p>
+          </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+{%block anchor%}
+{%endblock%}
+{%block reg%}
+{%endblock%}

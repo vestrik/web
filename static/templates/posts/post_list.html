@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h1>Post list</h1>
+    <div class="posts">
+      {% for post in posts %}
+      <div class="post">
+        <h3><a class="s" href="{{ post.slug }}/" target="_self">{{ post.title }}</a></h3>
+
+        {% if post.thumb %}
+        <img src="{{ post.thumb.url }}"/>
+        {% endif %}
+        <p>{{post.body|truncatewords:15}} </p>
+        <div class="post_comm_info">
+          <p>Posted by:<span class="user_name">  {{post.author}}</span> at {{post.date}}</p>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}
+{%block reg%}
+{%endblock%}
+{%block comm%}
+{%endblock%}
