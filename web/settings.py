@@ -26,7 +26,7 @@ SECRET_KEY = '_(+vww1gydu)n_))ede@m7#yrh49i97*+2ai2!^ms(2^!_5mx7'
 #SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = ['194.67.92.77','localhost','194-67-92-77.ovz.vps.regruhosting.ru']
