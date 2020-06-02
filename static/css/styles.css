@@ -21,7 +21,7 @@ header {
   height: 100%;
   min-height: 600px;
   overflow:auto;
-  font-family:'Open Sans';
+  font-family: "Roboto", Corbel, Avenir, "Lucida Grande", "Lucida Sans", sans-serif;
   word-spacing: 2px;
   letter-spacing: 1px;
   font-size:23px;
